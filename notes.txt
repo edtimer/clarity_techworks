@@ -1,0 +1,52 @@
+./vendor/bin/sail up  spin up
+
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail' * an alias for sail so we can say sail up or sail up -d
+
+
+sail composer require laravel/jetstream // to get jetstream
+
+using fortify to authenticate
+
+sail artisan jetstream:install inertia //this will scafold the jetstream application
+
+sail npm install && sail npm run dev //to get the dependencies
+
+
+got an error cant resolve laravel vite plugin so did the following
+
+sail npm install --save-dev vite laravel-vite-plugin
+sail npm install --save-dev @vitejs/plugin-vue
+
+
+
+
+sail artisan migrate //run the migration
+
+sail artisan tin //can be used to create an account
+
+
+User::factory()->create(); //using tin to create an account
+
+got this
+{
+  name: "Billy Farrell",
+    email: "hlangosh@example.net",
+    email_verified_at: "2023-06-25 13:25:30",
+    #password: "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",    #two_factor_secret: null,
+    #two_factor_recovery_codes: null,
+    #remember_token: "0GE7gZ1lGG",
+    profile_photo_path: null,
+    current_team_id: null,
+    updated_at: "2023-06-25 13:25:30",
+    created_at: "2023-06-25 13:25:30",
+    id: 1,
+    +profile_photo_url: "https://ui-avatars.com/api/?name=B+F&color=7F9CF5&background=EBF4FF",
+  }
+
+
+  
+  artisan config:clear //clearing cache
+
+
+
+          
