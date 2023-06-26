@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use Inertia\Inertia;
+
 class BookController extends Controller
 {
     /**
@@ -13,8 +15,17 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
-        return Book::all();
+        $books = Book::all();
+
+        return Inertia::render('Book/Index', [
+            'books' => $books,
+        ]);
+    }
+    public function tester()
+    {
+        $books = Book::all();
+
+        return redirect()->route('book')->banner('Book added.');
     }
 
     /**
@@ -24,7 +35,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+
+
+        return redirect()->route('book')->banner('Book added.');
     }
 
     /**
@@ -41,13 +54,23 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function search()
     {
-        //
+        return Inertia::render('Book/SearchBook');
     }
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function search($id)
+    // {
+    //     return Inertia::render('Book/SearchBook');
+    // }
 
     /**
      * Show the form for editing the specified resource.

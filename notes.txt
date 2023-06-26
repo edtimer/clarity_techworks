@@ -45,7 +45,8 @@ got this
 
 
   
-  artisan config:clear //clearing cache
+  artisan config:clear //clearing config
+  artisan cache:clear //clearing cache
 
 creating a Seeder
 sail artisan make:seeder BookSeeder
@@ -62,3 +63,4 @@ sail artisan make:seeder BookSeeder
         });
 
           
+        npm run watch

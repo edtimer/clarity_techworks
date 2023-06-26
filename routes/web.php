@@ -24,7 +24,14 @@ Route::get('/', function () {
     ]);
 });
 //route pointing to BookController
-Route::get('/books', [BookController::class,'index']);
+Route::get('/books', [BookController::class,'index'])->name('book');
+Route::get('/search', [BookController::class,'search'])->name('bookSearch');
+Route::post('/result', [BookController::class,'index'])->name('result');
+
+
+Route::get('/tester', [BookController::class,'tester']);
+
+Route::get('/wow', [BookController::class, 'index'])->name('wow');
 
 Route::middleware([
     'auth:sanctum',
