@@ -35,9 +35,9 @@ class BookController extends Controller
      */
     public function create()
     {
+        return Inertia::render('Book/Create');
 
-
-        return redirect()->route('book')->banner('Book added.');
+        // return redirect()->route('book')->banner('Book added.');
     }
 
     /**

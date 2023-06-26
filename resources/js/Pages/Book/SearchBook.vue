@@ -1,30 +1,54 @@
-<script>
+<script setup>
+import { useForm } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import SearchCard from '@/Components/AuthenticationCard.vue';
 const form = useForm({
-    searchTerm: '',
+    bookNameParam: '',
+    isbnParam: '',
 });
 
 const submit = () => {
     form.post(route('result'), {
-        onFinish: () => form.reset('searchTerm'),
+        onFinish: () => form.reset('bookNameParam','isbnParam'),
     });
 };
 </script>
 
 <template>
-
+<SearchCard>
 <form @submit.prevent="submit">
             <div>
-                <InputLabel for="searchTerm" value="searchTerm" />
-                <TextInput
-                    id="searchTerm"
-                    v-model="form.searchTerm"
+                Name:
+                <InputLabel for="Search book by ISBN or name" value="bookNameParam" />
+                <TextInput 
+                    id="bookNameParam"
+                    v-model="form.bookNameParam"
                     type="text"
-                    class="mt-1 block w-full"
+                    placeholder="book name"
+                    class="mt-1 block w-full placeholder-gray-500"
                     required
                     autofocus
-                    autocomplete="searchTerm"
+                    autocomplete="bookNameParam"
                 />
-                <InputError class="mt-2" :message="form.errors.searchTerm" />
+                <InputError class="mt-2" :message="form.errors.bookNameParam" />
+            </div>
+            <div>
+                ISBN
+                <InputLabel for="ISBN" value="isbnParam" />
+                <TextInput 
+                    id="searchTerm"
+                    v-model="form.isbnParam"
+                    type="text"
+                    placeholder="example 1234"
+                    class="mt-1 block w-full placeholder-gray-500"
+                    required
+                    autofocus
+                    autocomplete="isbnParam"
+                />
+                <InputError class="mt-2" :message="form.errors.isbnParam" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -35,4 +59,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
+        </SearchCard>
 </template>

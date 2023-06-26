@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
+import SelectionCard from '../Components/SelectionCard.vue';
 </script>
 
 <template>
@@ -15,6 +16,9 @@ import Welcome from '@/Components/Welcome.vue';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <Welcome />
+                </div>
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <SelectionCard />
                 </div>
             </div>
         </div>

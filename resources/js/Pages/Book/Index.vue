@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3'
+import UnAuthenticatedLayout from '../../Layouts/UnAuthenticatedLayout.vue';
 //destructuring the prop
 defineProps({ books: Array })
 </script>
@@ -14,7 +15,8 @@ defineProps({ books: Array })
 </template> -->
 <template>
   {{ console.log(books) }}
-  <AppLayout title="Dashboard">
+  <!-- <AppLayout title="Dashboard"> -->
+    <UnAuthenticatedLayout>
     <div class="container mx-auto">
       <h1 class="text-2xl font-bold mb-4 mt-6">Book List</h1>
       <table class="table-auto min-w-full bg-white border border-gray-200 ">
@@ -40,6 +42,7 @@ defineProps({ books: Array })
         </tbody>
       </table>
     </div>
-  </AppLayout>
+    </UnAuthenticatedLayout>
+  <!-- </AppLayout> -->
 </template>
 

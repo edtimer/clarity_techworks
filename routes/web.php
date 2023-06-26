@@ -26,7 +26,8 @@ Route::get('/', function () {
 //route pointing to BookController
 Route::get('/books', [BookController::class,'index'])->name('book');
 Route::get('/search', [BookController::class,'search'])->name('bookSearch');
-Route::post('/result', [BookController::class,'index'])->name('result');
+Route::post('/result', [BookController::class,'search'])->name('result');
+Route::get('/create', [BookController::class,'create'])->name('create');
 
 
 Route::get('/tester', [BookController::class,'tester']);
