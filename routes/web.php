@@ -23,6 +23,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+//route pointing to BookController
+Route::get('/books', [BookController::class,'index']);
 
 Route::middleware([
     'auth:sanctum',
