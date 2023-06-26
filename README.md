@@ -7,9 +7,95 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Running this project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- This clarity techworks assessment requires docker
+
+start with running the setup.sh script
+```sh
+./setup.sh
+```
+after it completes then navigate to the created folder and run it would ask for admin password / sudo pass to run chmod
+```
+./vendor/bin/sail up  spin up
+```
+the following commands would help during the evaluation of the system I made
+
+```
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail' * an alias for sail so we can say sail up or sail up -d
+
+
+sail composer require laravel/jetstream // to get jetstream
+
+
+
+sail artisan jetstream:install inertia //this will scafold the jetstream application
+
+sail npm install && sail npm run dev //to get the dependencies
+
+```
+
+got an error cant resolve laravel vite plugin so did the following
+```
+sail npm install --save-dev vite laravel-vite-plugin
+sail npm install --save-dev @vitejs/plugin-vue
+```
+
+-migration
+```
+sail artisan migrate //run the migration
+```
+- seeding users
+```
+sail artisan tin //can be used to create an account
+
+
+User::factory()->create(); //using tin to create an account
+```
+Running the factory using tin would console.log this
+{
+  name: "Billy Farrell",
+    email: "hlangosh@example.net",
+    email_verified_at: "2023-06-25 13:25:30",
+    #password: "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",    #two_factor_secret: null,
+    #two_factor_recovery_codes: null,
+    #remember_token: "0GE7gZ1lGG",
+    profile_photo_path: null,
+    current_team_id: null,
+    updated_at: "2023-06-25 13:25:30",
+    created_at: "2023-06-25 13:25:30",
+    id: 1,
+    +profile_photo_url: "https://ui-avatars.com/api/?name=B+F&color=7F9CF5&background=EBF4FF",
+  }
+
+```
+  
+  artisan config:clear //clearing config
+  artisan cache:clear //clearing cache
+```
+creating a Seeder for books
+``` 
+sail artisan make:seeder BookSeeder
+```
+
+-my books schema with full text indexing
+```
+        Schema::create('books', function (Blueprint $table) {
+            $table->id();
+            $table->string('isbn')->unique()->fullText();
+            $table->string('name')->fullText();
+            $table->string('genre');
+            $table->string('author');
+            $table->string('description',400);
+            $table->timestamps();
+        });
+        
+```
+- To build and run the application use 
+```
+ sail npm run build
+```
+Abdulla Adam 2023
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).

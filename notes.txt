@@ -5,7 +5,7 @@ alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail' * an alias for sail so
 
 sail composer require laravel/jetstream // to get jetstream
 
-using fortify to authenticate
+
 
 sail artisan jetstream:install inertia //this will scafold the jetstream application
 
