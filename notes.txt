@@ -47,6 +47,18 @@ got this
   
   artisan config:clear //clearing cache
 
+creating a Seeder
+sail artisan make:seeder BookSeeder
 
+//my books schema with full text indexing
+        Schema::create('books', function (Blueprint $table) {
+            $table->id();
+            $table->string('isbn')->unique()->fullText();
+            $table->string('name')->fullText();
+            $table->string('genre');
+            $table->string('author');
+            $table->string('description',400);
+            $table->timestamps();
+        });
 
           
