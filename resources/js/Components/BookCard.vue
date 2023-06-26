@@ -1,5 +1,6 @@
 
 <script setup>
+
 defineProps({
   url: String
 })
@@ -14,6 +15,6 @@ defineProps({
                 The best library in the world offers an endless selection of books.
             </p>
         </div>
-
     </div>
+
 </template>

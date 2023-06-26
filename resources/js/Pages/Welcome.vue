@@ -41,11 +41,11 @@ defineProps({
     <div class="font-bold text-xl mb-2">view available books</div>
     <p class="text-gray-700 text-base">
       The best library in the world offers an endless selection of books.
-    </p><Link :href="route('book')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    </p>
+    <Link :href="route('book')" class="bg-blue-950 hover:bg-blue-700 text-white font-bold  rounded">
   View books
-    </Link>
+  </Link>
   </div>
-
 </div>
 </div>
 <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">

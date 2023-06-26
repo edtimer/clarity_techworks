@@ -1,28 +1,32 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link, useForm,usePage } from '@inertiajs/vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import UnAuthenticatedLayout from '../../Layouts/UnAuthenticatedLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
+
 const form = useForm({
-    bookName: '',
+    name: '',
     isbn: '',
-    authorName: '',
+    author: '',
     genre: '',
     description: '',
 });
+//toast for success and failure
+const { $toast } = usePage();
+
 
 const submit = () => {
     form.post(route('store'), {
-        onFinish: () => form.reset('bookName', 'isbn', 'authorName', 'genre', 'description'),
+        onFinish: () => form.reset(['name', 'isbn', 'author', 'genre', 'description']),onError:(e)=>console.log(e)
     });
 };
 </script>
 
 <template>
-    <UnAuthenticatedLayout>
+    <AppLayout>
 
         <Head title="Register" />
 
@@ -31,10 +35,10 @@ const submit = () => {
             <h1>Add a new Book</h1>
             <form @submit.prevent="submit">
                 <div>
-                    <InputLabel for="name" value="bookName" />
-                    <TextInput id="bookName" v-model="form.bookName" type="text" class="mt-1 block w-full" required
-                        autofocus autocomplete="bookName" />
-                    <InputError class="mt-2" :message="form.errors.bookName" />
+                    <InputLabel for="name" value="name" />
+                    <TextInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" required
+                        autofocus autocomplete="name" />
+                    <InputError class="mt-2" :message="form.errors.name" />
                 </div>
 
                 <div class="mt-4">
@@ -45,10 +49,10 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                    <InputLabel for="authorName" value="authorName" />
-                    <TextInput id="authorName" v-model="form.authorName" type="text" class="mt-1 block w-full" required
-                        autocomplete="authorName" />
-                    <InputError class="mt-2" :message="form.errors.authorName" />
+                    <InputLabel for="author" value="author" />
+                    <TextInput id="author" v-model="form.author" type="text" class="mt-1 block w-full" required
+                        autocomplete="author" />
+                    <InputError class="mt-2" :message="form.errors.author" />
                 </div>
 
                 <div class="mt-4">
@@ -74,5 +78,5 @@ const submit = () => {
                 </div>
             </form>
         </AuthenticationCard>
-    </UnAuthenticatedLayout>
+    </AppLayout>
 </template>

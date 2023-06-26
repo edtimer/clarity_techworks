@@ -48,7 +48,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Book::create($request->validate([
+            'name' => ['required', 'max:40'],
+            'author' => ['required', 'max:100'],
+            'genre' => ['required', 'max:30'],
+            'isbn' => ['required', 'max:30'],
+            'description' => ['required', 'max:500'],
+        ]));
+
+        // return to_route('book');
+       return redirect()->route('book')->banner('Book added.');
     }
 
     /**
